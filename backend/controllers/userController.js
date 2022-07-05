@@ -15,4 +15,4 @@ const getMe = asyncHandler(async (req, res) => {
   res.json({ message: "user data display" });
 });
 
-module.exports = { registerUser };
+module.exports = { registerUser, loginUser, getMe };
