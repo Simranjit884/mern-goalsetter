@@ -1,9 +1,9 @@
 const asyncHandler = require("express-async-handler");
 
-const goal = require("../models/goalModal");
+const Goal = require("../models/goalModal");
 
 const getGoals = asyncHandler(async (req, res) => {
-  const goals = await goal.find();
+  const goals = await Goal.find();
 
   res.status(200).json(goals);
 });
@@ -13,8 +13,12 @@ const setGoals = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please add a text field");
   }
-  console.log(req.body);
-  res.status(200).json({ message: "Set goals" });
+
+  const goal = await Goal.create({
+    text: req.body.text
+  });
+
+  res.status(200).json(goal);
 });
 
 const updateGoal = asyncHandler(async (req, res) => {

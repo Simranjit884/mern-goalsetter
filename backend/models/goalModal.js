@@ -8,7 +8,7 @@ const goalSchema = mongoose.Schema(
     },
   },
   {
-    timeStamp: true,
+    timestamps: true,
   }
 );
 
